@@ -13,5 +13,6 @@ export {
   Twitter,
   MapPin,
   Clock,
-  Phone
+  Phone,
+  Sparkles
 } from 'lucide-react';
