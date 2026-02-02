@@ -14,5 +14,8 @@ export {
   MapPin,
   Clock,
   Phone,
-  Sparkles
+  Sparkles,
+  Plus,
+  Minus,
+  Check
 } from 'lucide-react';

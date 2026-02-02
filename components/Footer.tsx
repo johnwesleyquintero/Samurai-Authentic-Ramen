@@ -6,18 +6,18 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-navy-950 text-white border-t border-white/5 relative overflow-hidden">
         {/* Giant Watermark */}
-        <div className="absolute right-0 bottom-0 text-[15rem] leading-none font-jp font-black text-white/5 pointer-events-none select-none z-0">
+        <div className="absolute right-0 bottom-0 text-[8rem] md:text-[15rem] leading-none font-jp font-black text-white/5 pointer-events-none select-none z-0">
             侍
         </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
           
           {/* Brand */}
           <div className="text-center md:text-left space-y-6">
             <div className="flex flex-col">
-                 <h3 className="text-4xl font-serif font-black tracking-tighter">{FOOTER_DATA.brand.name}</h3>
-                 <span className="text-xs tracking-[0.4em] text-gray-500 uppercase">Authentic Ramen</span>
+                 <h3 className="text-3xl md:text-4xl font-serif font-black tracking-tighter">{FOOTER_DATA.brand.name}</h3>
+                 <span className="text-[10px] md:text-xs tracking-[0.4em] text-gray-500 uppercase">Authentic Ramen</span>
             </div>
            
             <p className="text-gray-400 font-sans text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
@@ -32,8 +32,8 @@ const Footer: React.FC = () => {
 
           {/* Info */}
           <div className="text-center md:text-left">
-            <h4 className="text-sm font-sans font-bold mb-8 tracking-[0.2em] text-gray-500">VISIT US</h4>
-            <ul className="space-y-6 text-gray-300 font-serif">
+            <h4 className="text-sm font-sans font-bold mb-6 md:mb-8 tracking-[0.2em] text-gray-500">VISIT US</h4>
+            <ul className="space-y-4 md:space-y-6 text-gray-300 font-serif text-sm md:text-base">
               <li className="flex items-start justify-center md:justify-start group">
                 <MapPin className="w-5 h-5 mr-4 flex-shrink-0 text-gray-500 group-hover:text-white transition-colors" />
                 <span className="group-hover:text-white transition-colors">{FOOTER_DATA.contact.address}</span>
@@ -50,8 +50,8 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="bg-navy-900/50 backdrop-blur-sm p-8 border border-white/10 clip-cut">
-            <h4 className="text-xl font-serif font-bold mb-2 text-white">{FOOTER_DATA.social.newsletterTitle}</h4>
+          <div className="bg-navy-900/50 backdrop-blur-sm p-6 md:p-8 border border-white/10 clip-cut">
+            <h4 className="text-lg md:text-xl font-serif font-bold mb-2 text-white">{FOOTER_DATA.social.newsletterTitle}</h4>
             <p className="text-xs text-gray-400 mb-6 leading-relaxed">
               {FOOTER_DATA.social.newsletterDesc}
             </p>
@@ -69,9 +69,9 @@ const Footer: React.FC = () => {
 
         </div>
         
-        <div className="mt-20 border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 font-sans tracking-widest uppercase">
+        <div className="mt-16 md:mt-20 border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs text-gray-600 font-sans tracking-widest uppercase text-center md:text-left gap-4 md:gap-0">
           <span>{FOOTER_DATA.copyright}</span>
-          <span className="mt-2 md:mt-0 opacity-50">Designed by Ronin AI</span>
+          <span className="opacity-50">Designed by Ronin AI</span>
         </div>
       </div>
     </footer>
