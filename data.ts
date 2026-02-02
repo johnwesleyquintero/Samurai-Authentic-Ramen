@@ -97,7 +97,7 @@ export const FOOTER_DATA = {
     description: "Authentic flavors inspired by the discipline of the warrior. We bring the spirit of traditional Japanese ramen to the modern world."
   },
   contact: {
-    address: "123 Bushido Blvd, Kyoto District",
+    address: "Ferido Compound, Purok galingan, Tagum, Davao del Norte",
     phone: "+1 (555) 000-0000",
     hours: "Mon-Sun: 11:00 AM - 10:00 PM"
   },

@@ -36,7 +36,8 @@ const Hero: React.FC<HeroProps> = ({ onOrderClick }) => {
         <div className="flex flex-col md:flex-row justify-center gap-6">
           <button 
             onClick={onOrderClick}
-            className="px-10 py-4 bg-white text-navy-900 font-bold uppercase tracking-widest hover:bg-gray-200 transition-all border-2 border-white"
+            className="opacity-0 animate-fade-in-scale px-10 py-4 bg-white text-navy-900 font-bold uppercase tracking-widest hover:bg-gray-200 transition-all border-2 border-white"
+            style={{ animationDelay: '0.2s' }}
           >
             View The Menu
           </button>
@@ -45,7 +46,8 @@ const Hero: React.FC<HeroProps> = ({ onOrderClick }) => {
                 const concierge = document.getElementById('concierge');
                 concierge?.scrollIntoView({ behavior: 'smooth' });
              }}
-            className="px-10 py-4 bg-transparent text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-all border-2 border-white"
+            className="opacity-0 animate-fade-in-scale px-10 py-4 bg-transparent text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-all border-2 border-white"
+            style={{ animationDelay: '0.4s' }}
           >
             Ask The Ronin
           </button>
