@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flame, Leaf } from 'lucide-react';
+import { Flame, Leaf } from '../icons';
 import { MENU_ITEMS } from '../data';
 
 const Menu: React.FC = () => {

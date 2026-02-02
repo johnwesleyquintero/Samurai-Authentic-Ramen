@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, UtensilsCrossed } from 'lucide-react';
+import { Menu, X, UtensilsCrossed } from '../icons';
 import { NAV_LINKS } from '../data';
 
 interface NavbarProps {

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles, User, Sword } from 'lucide-react';
+import { Send, User, Sword } from '../icons';
 import { sendMessageToRonin } from '../services/geminiService';
 import { ChatMessage } from '../types';
 import { AI_CONFIG } from '../data';

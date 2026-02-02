@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Facebook, Twitter, MapPin, Clock, Phone } from 'lucide-react';
+import { Instagram, Facebook, Twitter, MapPin, Clock, Phone } from '../icons';
 import { FOOTER_DATA } from '../data';
 
 const Footer: React.FC = () => {
