@@ -45,8 +45,14 @@ export const sendMessageToRonin = async (message: string): Promise<string> => {
     const chat = getGeminiChat();
     const result: GenerateContentResponse = await chat.sendMessage({ message });
     return result.text || "The wind blows silently... (No response)";
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error talking to Ramen Ronin:", error);
-    return "Forgive me, my meditation was interrupted. Please ask again.";
+    
+    // Handle missing API Key specifically
+    if (error.message === "API Key missing") {
+      return "The path is blocked. It seems the API Key is missing. Please ensure 'API_KEY' is set in your environment variables to commune with the Ronin.";
+    }
+
+    return "Forgive me, my meditation was interrupted by an unseen force. Please try asking again.";
   }
 };
