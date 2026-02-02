@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
+import { HERO_DATA } from '../data';
 
 interface HeroProps {
   onOrderClick: () => void;
@@ -11,7 +12,7 @@ const Hero: React.FC<HeroProps> = ({ onOrderClick }) => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://picsum.photos/id/431/1920/1080" 
+          src={HERO_DATA.bgImage}
           alt="Ramen Background" 
           className="w-full h-full object-cover opacity-40 grayscale" 
         />
@@ -22,14 +23,14 @@ const Hero: React.FC<HeroProps> = ({ onOrderClick }) => {
 
       <div className="relative z-20 text-center px-4 max-w-5xl mx-auto border-y-4 border-white py-12 bg-navy-900/60 backdrop-blur-sm">
         <p className="font-sans text-lg md:text-xl tracking-[0.5em] uppercase mb-4 text-gray-300">
-          Established 2024
+          {HERO_DATA.established}
         </p>
         <h1 className="font-serif text-5xl md:text-8xl font-black mb-6 leading-tight tracking-tighter text-white">
-          <span className="block text-2xl md:text-4xl font-normal mb-2 tracking-widest text-gray-400">The Way of</span>
-          RAMEN
+          <span className="block text-2xl md:text-4xl font-normal mb-2 tracking-widest text-gray-400">{HERO_DATA.subtitle}</span>
+          {HERO_DATA.title}
         </h1>
         <p className="font-serif italic text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto">
-          "A bowl of soul, forged in fire and broth."
+          {HERO_DATA.quote}
         </p>
         
         <div className="flex flex-col md:flex-row justify-center gap-6">

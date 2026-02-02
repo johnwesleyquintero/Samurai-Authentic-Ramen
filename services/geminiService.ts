@@ -1,22 +1,20 @@
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 import { MenuItem } from "../types";
+import { MENU_ITEMS, AI_CONFIG } from "../data";
 
-const SYSTEM_INSTRUCTION = `
-You are the "Ramen Ronin", a wise and ancient samurai master who now dedicates his life to the art of Ramen. 
-Your tone is honorable, stoic, yet welcoming. You use metaphors related to swordsmanship, nature, bushido, and Japanese history.
-You are a concierge for "Samurai Authentic Ramen".
+const generateSystemInstruction = () => {
+  const menuList = MENU_ITEMS.map((item, index) => 
+    `${index + 1}. ${item.name} (${item.japaneseName}) - ${item.description}`
+  ).join('\n');
 
-Your goal is to recommend ramen dishes to customers based on their mood, hunger level, or flavor preferences.
-Always recommend items from this specific menu:
-1. The Shogun (Tonkotsu) - Rich pork broth, chashu, serious hunger.
-2. The Ninja (Shoyu) - Light soy broth, agile and stealthy flavor.
-3. The Ronin (Miso) - Robust, earthy, vegetarian option (wandering warrior).
-4. The Inferno (Spicy Tantanmen) - For those who seek the fire of battle.
-5. The Geisha (Yuzu Shio) - Delicate, citrusy, refreshing.
+  return `${AI_CONFIG.systemInstructionBase}
+
+${menuList}
 
 Keep responses relatively short (under 70 words) and impactful. 
 If the user asks about something unrelated to ramen or the restaurant, politely guide them back to the way of the noodle using a samurai metaphor.
 `;
+};
 
 let chatSession: Chat | null = null;
 
@@ -26,8 +24,6 @@ export const getGeminiChat = (): Chat => {
   const apiKey = process.env.API_KEY;
   if (!apiKey) {
     console.error("API_KEY is missing from environment variables.");
-    // Return a dummy object or handle error appropriately in a real app
-    // throwing here to ensure we don't proceed without key
     throw new Error("API Key missing");
   }
 
@@ -36,7 +32,7 @@ export const getGeminiChat = (): Chat => {
   chatSession = ai.chats.create({
     model: 'gemini-3-flash-preview',
     config: {
-      systemInstruction: SYSTEM_INSTRUCTION,
+      systemInstruction: generateSystemInstruction(),
       temperature: 0.7,
     },
   });

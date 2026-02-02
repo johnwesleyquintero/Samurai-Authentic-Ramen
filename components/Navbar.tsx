@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, UtensilsCrossed } from 'lucide-react';
+import { NAV_LINKS } from '../data';
 
 interface NavbarProps {
   currentSection: string;
@@ -8,13 +9,6 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ currentSection, onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navLinks = [
-    { id: 'hero', label: 'Home' },
-    { id: 'menu', label: 'The Menu' },
-    { id: 'concierge', label: 'Ramen Ronin' },
-    { id: 'story', label: 'Our Story' },
-  ];
 
   const handleNav = (id: string) => {
     onNavigate(id);
@@ -35,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentSection, onNavigate }) => {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {navLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => handleNav(link.id)}
@@ -66,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentSection, onNavigate }) => {
       {isOpen && (
         <div className="md:hidden bg-navy-900 border-b border-white/10">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleNav(link.id)}

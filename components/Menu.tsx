@@ -1,59 +1,6 @@
 import React from 'react';
-import { MenuItem } from '../types';
 import { Flame, Leaf } from 'lucide-react';
-
-const MENU_ITEMS: MenuItem[] = [
-  {
-    id: '1',
-    name: 'The Shogun',
-    japaneseName: '将軍',
-    description: 'Our signature Tonkotsu. Rich 20-hour pork bone broth, tender chashu belly, kikurage mushrooms, and a seasoned egg.',
-    price: 18,
-    image: 'https://picsum.photos/id/292/600/400',
-    spicyLevel: 1,
-    tags: ['Bestseller', 'Rich'],
-  },
-  {
-    id: '2',
-    name: 'The Ninja',
-    japaneseName: '忍者',
-    description: 'Classic Tokyo-style Shoyu. Clear chicken and soy broth, bamboo shoots, naruto fish cake, and roast pork.',
-    price: 16,
-    image: 'https://picsum.photos/id/490/600/400',
-    spicyLevel: 0,
-    tags: ['Light', 'Classic'],
-  },
-  {
-    id: '3',
-    name: 'The Inferno',
-    japaneseName: '地獄',
-    description: 'Spicy Tantanmen with minced pork, chili oil, sesame paste, and bok choy. A warrior\'s challenge.',
-    price: 19,
-    image: 'https://picsum.photos/id/600/600/400',
-    spicyLevel: 5,
-    tags: ['Spicy'],
-  },
-  {
-    id: '4',
-    name: 'The Ronin',
-    japaneseName: '浪人',
-    description: 'Rich Miso broth with buttered corn, bean sprouts, and tofu. A robust flavor for the wandering soul.',
-    price: 17,
-    image: 'https://picsum.photos/id/40/600/400',
-    spicyLevel: 2,
-    tags: ['Vegetarian Option'],
-  },
-  {
-    id: '5',
-    name: 'The Geisha',
-    japaneseName: '芸者',
-    description: 'Yuzu Shio ramen. A delicate salt broth infused with citrus yuzu, topped with grilled chicken and greens.',
-    price: 18,
-    image: 'https://picsum.photos/id/493/600/400',
-    spicyLevel: 0,
-    tags: ['Refreshing'],
-  },
-];
+import { MENU_ITEMS } from '../data';
 
 const Menu: React.FC = () => {
   return (

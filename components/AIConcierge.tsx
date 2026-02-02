@@ -2,12 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, User, Sword } from 'lucide-react';
 import { sendMessageToRonin } from '../services/geminiService';
 import { ChatMessage } from '../types';
+import { AI_CONFIG } from '../data';
 
 const AIConcierge: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     { 
       role: 'model', 
-      text: 'Greetings, traveler. I am the Ramen Ronin. My blade is sharp, but my broth is sharper. How may I guide your appetite today?', 
+      text: AI_CONFIG.initialMessage, 
       timestamp: Date.now() 
     }
   ]);

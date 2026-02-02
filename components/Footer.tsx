@@ -1,5 +1,6 @@
 import React from 'react';
 import { Instagram, Facebook, Twitter, MapPin, Clock, Phone } from 'lucide-react';
+import { FOOTER_DATA } from '../data';
 
 const Footer: React.FC = () => {
   return (
@@ -9,10 +10,9 @@ const Footer: React.FC = () => {
           
           {/* Brand */}
           <div className="text-center md:text-left">
-            <h3 className="text-3xl font-serif font-bold mb-4">SAMURAI</h3>
+            <h3 className="text-3xl font-serif font-bold mb-4">{FOOTER_DATA.brand.name}</h3>
             <p className="text-gray-400 font-sans text-sm leading-relaxed mb-6">
-              Authentic flavors inspired by the discipline of the warrior. 
-              We bring the spirit of traditional Japanese ramen to the modern world.
+              {FOOTER_DATA.brand.description}
             </p>
             <div className="flex justify-center md:justify-start space-x-6">
               <a href="#" className="text-gray-400 hover:text-white transition-colors"><Instagram className="w-6 h-6" /></a>
@@ -27,24 +27,24 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-center justify-center md:justify-start">
                 <MapPin className="w-5 h-5 mr-3 flex-shrink-0" />
-                <span>123 Bushido Blvd, Kyoto District</span>
+                <span>{FOOTER_DATA.contact.address}</span>
               </li>
               <li className="flex items-center justify-center md:justify-start">
                 <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
-                <span>+1 (555) 000-0000</span>
+                <span>{FOOTER_DATA.contact.phone}</span>
               </li>
               <li className="flex items-center justify-center md:justify-start">
                 <Clock className="w-5 h-5 mr-3 flex-shrink-0" />
-                <span>Mon-Sun: 11:00 AM - 10:00 PM</span>
+                <span>{FOOTER_DATA.contact.hours}</span>
               </li>
             </ul>
           </div>
 
           {/* Newsletter / Social Manager Corner */}
           <div className="bg-navy-800 p-6 border border-white/10">
-            <h4 className="text-lg font-serif font-bold mb-4 text-white">Join the Clan</h4>
+            <h4 className="text-lg font-serif font-bold mb-4 text-white">{FOOTER_DATA.social.newsletterTitle}</h4>
             <p className="text-sm text-gray-400 mb-4">
-              Subscribe for exclusive offers and updates. Managed by your favorite Social Media team.
+              {FOOTER_DATA.social.newsletterDesc}
             </p>
             <form className="flex flex-col space-y-3" onSubmit={(e) => e.preventDefault()}>
               <input 
@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="mt-16 border-t border-white/10 pt-8 text-center text-xs text-gray-500 font-sans tracking-widest">
-          &copy; 2024 SAMURAI AUTHENTIC RAMEN. ALL RIGHTS RESERVED.
+          {FOOTER_DATA.copyright}
         </div>
       </div>
     </footer>
