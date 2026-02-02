@@ -21,9 +21,16 @@ let chatSession: Chat | null = null;
 export const getGeminiChat = (): Chat => {
   if (chatSession) return chatSession;
 
-  const apiKey = process.env.API_KEY;
+  // In Vercel and many frontend frameworks, environment variables must be prefixed 
+  // (e.g., NEXT_PUBLIC_, VITE_, REACT_APP_) to be exposed to the browser.
+  // We check all common patterns to ensure the API key is found.
+  const apiKey = process.env.API_KEY || 
+                 process.env.NEXT_PUBLIC_API_KEY || 
+                 process.env.VITE_API_KEY || 
+                 process.env.REACT_APP_API_KEY;
+
   if (!apiKey) {
-    console.error("API_KEY is missing from environment variables.");
+    console.error("API_KEY is missing from environment variables. Checked: API_KEY, NEXT_PUBLIC_API_KEY, VITE_API_KEY, REACT_APP_API_KEY");
     throw new Error("API Key missing");
   }
 
@@ -50,7 +57,7 @@ export const sendMessageToRonin = async (message: string): Promise<string> => {
     
     // Handle missing API Key specifically
     if (error.message === "API Key missing") {
-      return "The path is blocked. It seems the API Key is missing. Please ensure 'API_KEY' is set in your environment variables to commune with the Ronin.";
+      return "The path is blocked. It seems the API Key is missing. Please ensure 'API_KEY' (or NEXT_PUBLIC_API_KEY / VITE_API_KEY for Vercel) is set in your environment variables.";
     }
 
     return "Forgive me, my meditation was interrupted by an unseen force. Please try asking again.";

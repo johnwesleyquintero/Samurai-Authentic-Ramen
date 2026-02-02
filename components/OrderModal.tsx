@@ -60,8 +60,8 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, item }) => {
         onClick={onClose}
       ></div>
 
-      {/* Modal Container */}
-      <div className="relative w-full max-w-lg bg-navy-900 border border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      {/* Modal Container - Added text-white to reset inheritance from Menu section */}
+      <div className="relative w-full max-w-lg bg-navy-900 border border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[90vh] text-white">
         
         {/* Decorative Header Bar */}
         <div className="h-2 bg-gradient-to-r from-red-800 via-navy-800 to-red-800"></div>
@@ -110,18 +110,18 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, item }) => {
                 
                 {/* Quantity */}
                 <div className="flex items-center justify-between bg-navy-950 p-4 border border-white/5">
-                    <span className="font-bold uppercase tracking-widest text-xs md:text-sm">Quantity</span>
+                    <span className="font-bold uppercase tracking-widest text-xs md:text-sm text-white">Quantity</span>
                     <div className="flex items-center gap-4">
                         <button 
                             onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                            className="w-8 h-8 flex items-center justify-center border border-white/20 hover:bg-white hover:text-navy-900 transition-colors"
+                            className="w-8 h-8 flex items-center justify-center border border-white/20 hover:bg-white hover:text-navy-900 text-white transition-colors"
                         >
                             <Minus className="w-4 h-4" />
                         </button>
-                        <span className="text-xl font-serif font-bold w-6 text-center">{quantity}</span>
+                        <span className="text-xl font-serif font-bold w-6 text-center text-white">{quantity}</span>
                         <button 
                             onClick={() => setQuantity(quantity + 1)}
-                            className="w-8 h-8 flex items-center justify-center border border-white/20 hover:bg-white hover:text-navy-900 transition-colors"
+                            className="w-8 h-8 flex items-center justify-center border border-white/20 hover:bg-white hover:text-navy-900 text-white transition-colors"
                         >
                             <Plus className="w-4 h-4" />
                         </button>
@@ -130,7 +130,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, item }) => {
 
                 {/* Extras */}
                 <div>
-                    <h4 className="font-bold uppercase tracking-widest text-xs md:text-sm mb-4 border-b border-white/10 pb-2">Enhance Your Bowl</h4>
+                    <h4 className="font-bold uppercase tracking-widest text-xs md:text-sm mb-4 border-b border-white/10 pb-2 text-white">Enhance Your Bowl</h4>
                     <div className="space-y-3">
                         {EXTRAS.map(extra => (
                             <label key={extra.id} className="flex items-center justify-between cursor-pointer group hover:bg-white/5 p-2 transition-colors rounded">
@@ -179,7 +179,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, item }) => {
              </p>
              <button 
                 onClick={onClose}
-                className="px-6 md:px-8 py-3 border border-white/30 hover:bg-white hover:text-navy-900 transition-colors uppercase tracking-widest text-[10px] md:text-xs"
+                className="px-6 md:px-8 py-3 border border-white/30 hover:bg-white hover:text-navy-900 transition-colors uppercase tracking-widest text-[10px] md:text-xs text-white"
              >
                 Return to Menu
              </button>
