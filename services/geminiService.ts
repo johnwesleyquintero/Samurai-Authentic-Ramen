@@ -18,19 +18,46 @@ If the user asks about something unrelated to ramen or the restaurant, politely 
 
 let chatSession: Chat | null = null;
 
+const getApiKey = (): string | undefined => {
+  // 1. Try Vite (import.meta.env)
+  // This is the standard way to access env vars in Vite
+  try {
+    // @ts-ignore
+    if (typeof import.meta !== 'undefined' && import.meta.env) {
+       // @ts-ignore
+       if (import.meta.env.VITE_API_KEY) return import.meta.env.VITE_API_KEY;
+       // @ts-ignore
+       if (import.meta.env.API_KEY) return import.meta.env.API_KEY;
+    }
+  } catch (e) {
+    // Ignore errors in non-module environments
+  }
+
+  // 2. Try Process (Next.js / CRA / Standard Node)
+  // We check typeof process to avoid ReferenceError in browsers that don't polyfill it
+  try {
+    if (typeof process !== 'undefined' && process.env) {
+       if (process.env.API_KEY) return process.env.API_KEY;
+       if (process.env.NEXT_PUBLIC_API_KEY) return process.env.NEXT_PUBLIC_API_KEY;
+       if (process.env.REACT_APP_API_KEY) return process.env.REACT_APP_API_KEY;
+       // Fallback if some bundler maps VITE_ to process.env
+       if (process.env.VITE_API_KEY) return process.env.VITE_API_KEY;
+    }
+  } catch (e) {
+    // Ignore errors
+  }
+  
+  return undefined;
+}
+
 export const getGeminiChat = (): Chat => {
   if (chatSession) return chatSession;
 
-  // In Vercel and many frontend frameworks, environment variables must be prefixed 
-  // (e.g., NEXT_PUBLIC_, VITE_, REACT_APP_) to be exposed to the browser.
-  // We check all common patterns to ensure the API key is found.
-  const apiKey = process.env.API_KEY || 
-                 process.env.NEXT_PUBLIC_API_KEY || 
-                 process.env.VITE_API_KEY || 
-                 process.env.REACT_APP_API_KEY;
+  const apiKey = getApiKey();
 
   if (!apiKey) {
-    console.error("API_KEY is missing from environment variables. Checked: API_KEY, NEXT_PUBLIC_API_KEY, VITE_API_KEY, REACT_APP_API_KEY");
+    console.error("API_KEY is missing. Please check your environment variables.");
+    console.error("For Vite/Vercel: Ensure 'VITE_API_KEY' is set in your project settings.");
     throw new Error("API Key missing");
   }
 
@@ -57,7 +84,7 @@ export const sendMessageToRonin = async (message: string): Promise<string> => {
     
     // Handle missing API Key specifically
     if (error.message === "API Key missing") {
-      return "The path is blocked. It seems the API Key is missing. Please ensure 'API_KEY' (or NEXT_PUBLIC_API_KEY / VITE_API_KEY for Vercel) is set in your environment variables.";
+      return "The path is blocked. It seems the API Key is missing. Please ensure 'VITE_API_KEY' is set in your Vercel/Environment variables.";
     }
 
     return "Forgive me, my meditation was interrupted by an unseen force. Please try asking again.";
